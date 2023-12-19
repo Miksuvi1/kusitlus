@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Answers</title>
+  <link rel="stylesheet" href="kusitlus.css">
+</head>
+<body>
+  <div>
+  <img src="https://maikivs23.ikt.khk.ee/kusitlus/Maiki_animated.svg" alt="Logo">
+  </div>
+  
+  <h1 class="rainbow-text">Question 1: What is red and grows on a tree?</h1>
+  <p>Enter your answer below:</p>
+  <textarea id="userAnswer1" rows="1" cols="30"></textarea>
+  <br>
+
+  <h1 class="rainbow-text">Question 2: What has keys but can't open locks?</h1>
+  <p>Enter your answer below:</p>
+  <textarea id="userAnswer2" rows="1" cols="30"></textarea>
+  <br>
+
+  <h1 class="rainbow-text">Question 3: What has a heart that doesn't beat?</h1>
+  <p>Enter your answer below:</p>
+  <textarea id="userAnswer3" rows="1" cols="30"></textarea>
+  <br>
+
+  <button onclick="checkAnswers()">Submit Answers</button>
+  <button onclick="clearAnswers()">Clear Answers</button>
+
+  <p id="feedback"></p>
+
+  <script>
+    function checkAnswers() {
+      // Get user's input from all textareas
+      var userInput1 = document.getElementById('userAnswer1').value.toLowerCase();
+      var userInput2 = document.getElementById('userAnswer2').value.toLowerCase();
+      var userInput3 = document.getElementById('userAnswer3').value.toLowerCase();
+
+      // Check the correct answers
+      var correctAnswer1 = 'apple';
+      var correctAnswer2 = 'piano';
+      var correctAnswer3 = 'artichoke';
+
+      // Check if all answers are correct
+      if (userInput1 === correctAnswer1 && userInput2 === correctAnswer2 && userInput3 === correctAnswer3) {
+        document.getElementById('feedback').innerText = 'All answers are correct! Well done.';
+      } else {
+        var incorrectAnswers = [];
+
+        if (userInput1 !== correctAnswer1) {
+          incorrectAnswers.push('Question 1 (Correct answer: ' + correctAnswer1 + ')');
+        }
+        if (userInput2 !== correctAnswer2) {
+          incorrectAnswers.push('Question 2 (Correct answer: ' + correctAnswer2 + ')');
+        }
+        if (userInput3 !== correctAnswer3) {
+          incorrectAnswers.push('Question 3 (Correct answer: ' + correctAnswer3 + ')');
+        }
+
+        document.getElementById('feedback').innerText = 'Incorrect. Try again for ' + incorrectAnswers.join(', ') + '.';
+      }
+    }
+
+    function clearAnswers() {
+      // Clear the text areas
+      document.getElementById('userAnswer1').value = '';
+      document.getElementById('userAnswer2').value = '';
+      document.getElementById('userAnswer3').value = '';
+
+      // Clear the feedback message
+      document.getElementById('feedback').innerText = '';
+    }
+  </script>
+
+</body>
+</html>
